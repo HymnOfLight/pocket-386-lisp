@@ -26,6 +26,16 @@ LCF-README.md  本说明（中文 + 元理论讨论）
 * (load "c:\\lisp\\lcf.lsp")
 ```
 
+> **重要 —— 行尾格式**：源文件必须用 **DOS 风格 CRLF**（`\r\n`）行尾，
+> 否则 Apteryx Lisp 会把整个文件看成单一长行，报错 *Line too long*。
+> 本仓库的 `.lsp` 文件已经通过 `.gitattributes` 强制存为 CRLF；用
+> git 直接 clone 出来就是对的。如果是通过其它途径传输（FTP / WSL /
+> Linux `cp` / `tar` 等），请确认目标文件是 CRLF：
+>
+> - Linux/macOS：`file lcf.lsp` 应输出 `... with CRLF line terminators`；
+>   如果不是，运行 `unix2dos lcf.lsp` 修正后再拷贝。
+> - FTP：务必使用 **ASCII 模式**，让客户端自动转换换行。
+
 文件末尾的 `(demo)` 会自动跑完所有示例。要交互式构造定理，直接在
 Listener 调用 `(rule-assume ...)`、`(rule-mp ...)` 等即可。
 
